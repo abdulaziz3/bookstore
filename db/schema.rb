@@ -11,7 +11,47 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180405013652) do
+ActiveRecord::Schema.define(version: 20180405162353) do
+
+  create_table "books", force: :cascade do |t|
+    t.string   "title"
+    t.string   "author"
+    t.decimal  "price"
+    t.string   "category"
+    t.string   "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "carts", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "lineitems", force: :cascade do |t|
+    t.integer  "book_id"
+    t.integer  "order_id"
+    t.integer  "quantity"
+    t.integer  "cart_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer  "user_id"
+    t.decimal  "total"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.text     "comment"
+    t.integer  "stars"
+    t.integer  "book_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
@@ -20,6 +60,7 @@ ActiveRecord::Schema.define(version: 20180405013652) do
     t.datetime "dob"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.boolean  "admin"
   end
 
 end
