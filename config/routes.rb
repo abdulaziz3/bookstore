@@ -6,20 +6,31 @@ Rails.application.routes.draw do
   resources :orders
   resources :orders
   resources :books
+
   get 'pages/home'
 
   get 'pages/about'
 
-  get 'session/new'
+  resources :books do
+		resources :reviews
+  end
 
-  get 'session/create'
+  controller :session do
+		get 'login' => :new
+		post 'login' => :create
+		get 'logout' => :destroy
+		delete 'logout' => :destroy
+	end
 
-  get 'session/destroy'
+  get 'search' => 'books#search'
 
+  resources :carts do
+    resources :lineitems
+  end
   resources :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
-
+  root :to => "pages#home"
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 

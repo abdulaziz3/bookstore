@@ -1,37 +1,61 @@
-<%= form_for(@book) do |f| %>
-  <% if @book.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@book.errors.count, "error") %> prohibited this book from being saved:</h2>
+<%= render 'shared/errors', object: @book %>
+<div class ='row'>
+    <div class = 'col-xs-12'>
+        <%= form_for(@book, :html => {class: "form-horizontal", role: "form"}) do |f| %>
 
-      <ul>
-      <% @book.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+  <div class="form-group">
+    <div class="control-label col-sm-2">
+      <%= f.label :image %>
     </div>
-  <% end %>
+    <div class="col-sm-8">
+      <%= f.text_field :image, class: "form-control",  placeholder: "Product Name",     autofocus: true  %>
+    </div>
+  </div>
 
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
+  <div class="form-group">
+    <div class="control-label col-sm-2">
+      <%= f.label :title %>
+    </div>
+    <div class="col-sm-8">
+      <%= f.text_field :title, class: "form-control",  placeholder: "book title",     autofocus: true  %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :author %><br>
-    <%= f.text_field :author %>
+author
+  <div class="form-group">
+    <div class="control-label col-sm-2">
+      <%= f.label :author %>
+    </div>
+    <div class="col-sm-8">
+      <%= f.text_field :author, class: "form-control",  placeholder: "Author name",     autofocus: true  %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :price %><br>
-    <%= f.text_field :price %>
+
+  <div class="form-group">
+    <div class="control-label col-sm-2">
+      <%= f.label :category %>
+    </div>
+    <div class="col-sm-8">
+      <%= f.select :category, Book::CATEGORY, {prompt: "select category"}, {class: "form-control"} %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :category %><br>
-    <%= f.text_field :category %>
+
+  <div class="form-group">
+    <div class="control-label col-sm-2">
+      <%= f.label :price %>
+    </div>
+    <div class="col-sm-8">
+      <%= f.text_field :price, class: "form-control",  placeholder: "book price",     autofocus: true  %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :image %><br>
-    <%= f.text_field :image %>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-2">
+      <%= f.submit class: 'btn btn-primary btn-lg'%>
+    </div>
+    <div class="col-xs-4 col-xs-offset-2">
+      <%= link_to 'Go Back', books_path, class: "btn btn-danger btn-lg pull-right"%>
+    </div>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+
+  <% end %>
   </div>
-<% end %>
+  </div>

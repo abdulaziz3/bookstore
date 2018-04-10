@@ -8,7 +8,9 @@ class Book < ActiveRecord::Base
   end
 
   def self.search(query)
-		where(" book_name LIKE ?", "%#{query}%")
+		where(" title LIKE ?", "%#{query}%")
 	end
+
+  CATEGORY = ["business", "food", "science", "fiction", "story"]
 
 end

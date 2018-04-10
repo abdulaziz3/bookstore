@@ -7,6 +7,17 @@ class BooksController < ApplicationController
     @books = Book.all
   end
 
+  def search
+    @books = Book.search params[:query]
+      unless @books.empty?
+        render 'index'
+      else
+       flash[:notice] = "NO Products Were Found !"
+          @book = Book.all
+          render 'index'
+      end
+  end
+
   # GET /books/1
   # GET /books/1.json
   def show
