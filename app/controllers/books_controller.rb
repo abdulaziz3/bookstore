@@ -35,17 +35,13 @@ class BooksController < ApplicationController
   # POST /books
   # POST /books.json
   def create
-    @book = Book.new(book_params)
-
-    respond_to do |format|
-      if @book.save
-        format.html { redirect_to @book, notice: 'Book was successfully created.' }
-        format.json { render :show, status: :created, location: @book }
-      else
-        format.html { render :new }
-        format.json { render json: @book.errors, status: :unprocessable_entity }
-      end
-    end
+    @book = Book.new (product_params)
+       		if  @book.save
+       			flash[:success] = "book was successfully created"
+       			redirect_to  book_path(@book)
+       		else
+       			 render 'new'
+       		 end
   end
 
   # PATCH/PUT /books/1

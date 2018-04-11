@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
-
+  before_action :authorise
   # GET /orders
   # GET /orders.json
   def index
@@ -24,20 +24,17 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
-    @order = Order.new(order_params)
-	  @order.add_lineitems_from_cart(current_cart)
-	  @order.customer_id = @current_user.id
-    respond_to do |format|
-      if @order.save
-		Cart.destroy(session[:cart_id])
-		session[:cart_id] = nil
-			format.html { redirect_to root_path, notice: 'Thank you for your order' }
-			format.json { render json: @order, status: :created, location: @order }
-		else
-			@cart = current_cart
-				format.html { render action: "new" }
-				format.json { render json: @order.errors, status: :unprocessable_entity }
-      end
+  @order = Order.new(order_params)
+  @order.add_lineitem_from_cart(current_cart)
+  @order.user_id = @current_user.id
+  if @order.save
+      Cart.destroy(session[:cart_id])
+      session[:cart_id] = nil
+      flash[:success] = 'Thank You for your order.'
+      redirect_to root_path
+    else
+      @cart = current_cart
+      render 'new'
     end
   end
 

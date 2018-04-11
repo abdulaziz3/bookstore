@@ -12,6 +12,15 @@ body {
 	overflow-x: hidden;
 }
 
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+	width: 100%;
+	border-radius: 5px;
+	color: white;
+}
+
 .label-danger {
 	color: white;
   background-color: #443737;

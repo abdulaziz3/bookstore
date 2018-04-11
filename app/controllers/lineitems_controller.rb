@@ -1,6 +1,6 @@
 class LineitemsController < ApplicationController
   before_action :set_lineitem, only: [:show, :edit, :update, :destroy]
-
+  before_action :current_cart, only: [:create]
   # GET /lineitems
   # GET /lineitems.json
   def index
@@ -24,7 +24,8 @@ class LineitemsController < ApplicationController
   # POST /lineitems
   # POST /lineitems.json
   def create
-    @lineitem = Lineitem.new(lineitem_params)
+    book = Book.find (params[:book_id])
+    @lineitem = @cart.add_book(book.id)
 
     respond_to do |format|
       if @lineitem.save
@@ -69,6 +70,6 @@ class LineitemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def lineitem_params
-      params.require(:lineitem).permit(:book_id, :order_id, :quantity, :cart_id)
+      params.require(:lineitem).permit(:book_id, :quantity, :cart_id)
     end
 end

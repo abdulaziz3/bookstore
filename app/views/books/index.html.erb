@@ -14,7 +14,7 @@
 						<p> Category: # <%= book.category %></p>
 
 						<div class=" well product-action">
-							<% if signed_in? and @current_customer.admin? %>
+							<% if signed_in? and @current_user.admin? %>
 								<%= link_to 'Edit', edit_book_path(book), class: "btn btn-md btn-success" %>
 								<%= link_to 'Delete ', book, method: :delete, data: {confirm: "Are you sure ? "},class: "btn btn-md btn-danger" %>
 							<%end%>
