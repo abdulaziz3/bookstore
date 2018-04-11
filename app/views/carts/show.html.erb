@@ -1,4 +1,27 @@
-<p id="notice"><%= notice %></p>
+<table class="table table-hover">
+		<thead>
+    		<tr>
+				<th><h2> Shopping Cart </h2></th>
+      	<th>Price</th>
+				<th>Quantity</th>
+    		</tr>
+  		</thead>
 
-<%= link_to 'Edit', edit_cart_path(@cart) %> |
-<%= link_to 'Back', carts_path %>
+ 	 	<tbody>
+   			 <% @cart.lineitems.each do |item| %>
+     	 		<tr class="well">
+					<td><img class="media-object"> <%= image_tag item.book.image , :size => '100x100'%>
+					&emsp;&emsp;<%= item.book.title %></td>
+      			 	<td></br><%= euro item.book.price * item.quantity %></td>
+      			 	<td></br>&emsp;&emsp; <%= item.quantity %>
+              </td>
+            </tr>
+   	 		<% end %>
+				<tr class="well">
+					<td colspan = 3> <font size="4"><center><b>Total: <%= euro @total %></b></center></font></td>
+				</tr>
+		</tbody>
+</table>
+	<%= link_to "Empty cart", @cart, method: :delete, confirm: 'Are you sure?', class: "btn btn-md btn-danger" %>
+	&emsp;<%= link_to "Continue Shopping", books_path, class: "btn btn-md btn-primary" %>
+	<%= link_to "Checkout", new_order_path, class: "btn btn-md btn-success pull-right" %>

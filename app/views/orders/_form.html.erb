@@ -5,6 +5,7 @@
 
     <div class="form-group">
       <div class="col-sm-8 control-label">
+        <h3>select credit card</h3>
         <%= f.collection_select :shipping_and_payment_id, ShippingAndPayment.all, :id, :card_number, {prompt: "select a payment and shipping account"}, {class: "form-control"} %></br></br>
       </div>
     </div>
