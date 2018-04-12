@@ -1,14 +1,10 @@
 Rails.application.routes.draw do
-  resources :shipping_and_payments
-  resources :reviews
-  resources :carts
+
   resources :lineitems
-  resources :orders
   resources :orders
   resources :books
 
   get 'pages/home'
-
   get 'pages/about'
 
   resources :books do
@@ -27,6 +23,7 @@ Rails.application.routes.draw do
   resources :carts do
     resources :lineitems
   end
+
   resources :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

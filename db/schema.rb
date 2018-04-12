@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180410234216) do
+ActiveRecord::Schema.define(version: 20180412195952) do
 
   create_table "books", force: :cascade do |t|
     t.string   "title"
@@ -34,14 +34,15 @@ ActiveRecord::Schema.define(version: 20180410234216) do
     t.integer  "cart_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "order_id"
   end
 
   create_table "orders", force: :cascade do |t|
     t.integer  "user_id"
     t.decimal  "total"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-    t.integer  "shipping_and_payment_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "payment"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -53,18 +54,6 @@ ActiveRecord::Schema.define(version: 20180410234216) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "shipping_and_payments", force: :cascade do |t|
-    t.string   "payment_method"
-    t.integer  "card_number"
-    t.date     "ex_date"
-    t.integer  "cvv"
-    t.string   "shipping_address"
-    t.string   "phone"
-    t.string   "name"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "password_digest"
@@ -73,6 +62,7 @@ ActiveRecord::Schema.define(version: 20180410234216) do
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
     t.boolean  "admin",           default: false, null: false
+    t.string   "l_name"
   end
 
 end

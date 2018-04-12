@@ -29,8 +29,8 @@ class LineitemsController < ApplicationController
 
     respond_to do |format|
       if @lineitem.save
-        format.html { redirect_to @lineitem, notice: 'Lineitem was successfully created.' }
-        format.json { render :show, status: :created, location: @lineitem }
+        format.html { redirect_to @cart, notice: 'Lineitem was successfully created.' }
+        format.json { render action: 'show', status: :created, location: @lineitem }
       else
         format.html { render :new }
         format.json { render json: @lineitem.errors, status: :unprocessable_entity }

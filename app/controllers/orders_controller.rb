@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
   before_action :authorise
   # GET /orders
-  # GET /orders.json
+  # GET /orders.json //bookstore
   def index
     @orders = Order.all
   end
@@ -25,16 +25,17 @@ class OrdersController < ApplicationController
   # POST /orders.json
   def create
   @order = Order.new(order_params)
-  @order.add_lineitem_from_cart(current_cart)
+  @order.add_lineitems_from_cart(current_cart)
   @order.user_id = @current_user.id
-  if @order.save
+  p current_cart
+    if @order.save
       Cart.destroy(session[:cart_id])
       session[:cart_id] = nil
-      flash[:success] = 'Thank You for your order.'
+      flash[:success] = "Thank you for your order"
       redirect_to root_path
     else
       @cart = current_cart
-      render 'new'
+			  render 'new'
     end
   end
 
@@ -70,6 +71,6 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:user_id, :total, :shipping_and_payment_id)
+      params.require(:order).permit(:user_id, :total, :payment)
     end
 end

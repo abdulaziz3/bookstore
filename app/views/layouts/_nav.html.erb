@@ -14,17 +14,14 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1 colore">
       <ul class="nav navbar-nav">
-        <li> <%= link_to "Products", books_path, id: "logo"%><li>
+        <li> <%= link_to "Books", books_path, id: "logo"%><li>
 
-            <li><%= link_to "Customers", users_path, id: "logo"%></li>
+            <li><%= link_to "Users", users_path, id: "logo"%></li>
 
          	<li class="dropdown" , id= "logo">
         	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false", id= "logo">Actions<span class="caret"></span></a>
           	  <ul class="dropdown-menu">
-          	  <li><%= link_to "New Product", new_book_path%></li>
-
-          	  <li><%= link_to "View Products", books_path%></li>
-          	  <li><a href="#">Something else here</a></li>
+          	  <li><%= link_to "New Book", new_book_path%></li>
           	  <li role="separator" class="divider"></li>
           	</ul>
         </li>
@@ -44,7 +41,7 @@
 			<ul class="dropdown-menu">
 				<li><%= link_to "Edit Profile", edit_user_path(@current_user) %> </li>
 				<li><%= link_to "View Profile", user_path(@current_user) %></li>
-				<li><%= link_to "View cart", root_path %></li>
+				<li><%= link_to "View cart", carts_path(@cart) %></li>
         <li role="separator" class="divider"></li>
         <li><%= mail_to "azizdemocollege@gmail.com", "e-Mail us" %></li>
 			</ul>

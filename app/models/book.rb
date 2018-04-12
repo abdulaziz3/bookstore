@@ -1,8 +1,9 @@
 class Book < ActiveRecord::Base
   has_many :lineitems
-
   has_many :reviews
 
+  validates :price, presence: true
+  
   def average_stars
     reviews.average(:stars)
   end
@@ -13,7 +14,4 @@ class Book < ActiveRecord::Base
 
   CATEGORY = ["business", "food", "science", "fiction", "story"]
 
-  def average_stars
-    reviews.average(:stars)
-  end
 end
