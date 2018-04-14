@@ -1,3 +1,4 @@
+require "Logger"
 class SessionController < ApplicationController
   def new
   end
@@ -12,6 +13,7 @@ class SessionController < ApplicationController
 		  flash[:danger] = "Invalid email / password "
 		  render'new'
 	  end
+      Logger.instance.log("User has signed in: " + user.id + "\n")
   end
 
   def destroy
