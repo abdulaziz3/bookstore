@@ -13,6 +13,7 @@ class CartsController < ApplicationController
   # GET /carts/1.json
   def show
     @total = TotalService.call(@cart)
+    
     Logger.instance.log("Total amount in Cart: " + @total.to_s + "\n")
   end
 

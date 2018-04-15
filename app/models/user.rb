@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   has_secure_password
   has_many :reviews
   has_many :orders
+
   before_save {self.email = email.downcase}
 
 	VALID_EMAIL_VAL = /\A[\w+\-.]+@[A-z\d\-.]+\.[a-z]+\z/i

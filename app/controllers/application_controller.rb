@@ -26,4 +26,11 @@ class ApplicationController < ActionController::Base
 		session[:cart_id] = @cart.id
 	end
 
+  def require_admin
+	  if !signed_in? || (signed_in? and !@current_user.admin?)
+		  flash[:danger] = "Only admins can perform that action"
+		  redirect_to books_path
+	  end
+  end
+
 end

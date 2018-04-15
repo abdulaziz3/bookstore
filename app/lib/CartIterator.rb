@@ -1,4 +1,5 @@
 class CartIterator
+  
   def initialize(cart)
     @cart = cart
     @index = 0

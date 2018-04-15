@@ -9,7 +9,7 @@ class SessionController < ApplicationController
 		  session[:user_id] = user.id
 		  flash[:success] = "Welcome back"
 		  redirect_to session[:return_to] || root_path
-      Logger.instance.log("User has signed in: " + user.id + "\n")
+      Logger.instance.log("User has signed in: " + user.id.to_s + "\n")
 	  else
 		  flash[:danger] = "Invalid email / password "
 		  render'new'

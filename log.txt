@@ -30,3 +30,10 @@ Total amount in Cart: 40.0
 Total amount in Cart: 40.0
 Total amount in Cart: 40.0
 Total amount in Cart: 60.0
+User has signed in: #<User:0x007f7fce65fa90>
+User has signed in: 1
+Total amount in Cart: 25.0
+Total amount in Cart: 50.0
+User has signed in: 2
+User has signed in: 1
+User has signed in: 2
