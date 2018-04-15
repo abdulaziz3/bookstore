@@ -13,9 +13,6 @@ class TotalService < BaseService
       item = cartIterator.next_item
       total = total + (item.book.price * item.quantity)
     end
-    # cart.lineitems.each do |item|
-    #   total = total + (item.book.price * item.quantity)
-    # end
     total
   end
 

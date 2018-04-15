@@ -35,7 +35,7 @@ class BooksController < ApplicationController
   # POST /books
   # POST /books.json
   def create
-    @book = Book.new (product_params)
+    @book = Book.new (book_params)
        		if  @book.save
        			flash[:success] = "book was successfully created"
        			redirect_to  book_path(@book)

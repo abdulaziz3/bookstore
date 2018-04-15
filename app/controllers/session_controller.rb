@@ -9,11 +9,11 @@ class SessionController < ApplicationController
 		  session[:user_id] = user.id
 		  flash[:success] = "Welcome back"
 		  redirect_to session[:return_to] || root_path
+      Logger.instance.log("User has signed in: " + user.id + "\n")
 	  else
 		  flash[:danger] = "Invalid email / password "
 		  render'new'
 	  end
-      Logger.instance.log("User has signed in: " + user.id + "\n")
   end
 
   def destroy

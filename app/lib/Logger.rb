@@ -6,12 +6,9 @@ class Logger
 
   def initialize
     @log = File.open("log.txt", "a")
-    p @log
-    p "test"
   end
 
   def log(msg)
     @log.write(msg)
-    p msg
   end
 end
