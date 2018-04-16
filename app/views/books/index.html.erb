@@ -1,5 +1,9 @@
 <h2 align = "center ">BOOKS LIST</h2>
-<div class="row">
+
+<% if signed_in? and @current_user.admin? %>
+	<%= button_to 'Apply Discount', discount_path, method: :get, class: "btn btn-md btn-success" %>
+<% end %>
+<div class="row spacer">
 		<% @books.each do |book| %>
 			  <div class="col-sm-6 col-md-4">
 				  <div class="thumbnail">
@@ -11,7 +15,7 @@
 						<p> Title: <%= book.title %></p>
 						<p> Author: <%= book.author %></p>
 						<p> price: <%= euro book.price %></p>
-						<p> Category: # <%= book.category %></p>
+						<p> Category: # <%= book.category.name %></p>
 
 						<div class=" well product-action">
 							<% if signed_in? and @current_user.admin? %>

@@ -2,7 +2,7 @@ class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy]
   before_action :authorise, except: [:show, :index]
   before_action :require_admin, only: [:new, :edit, :update, :destroy]
-  
+
   # GET /books
   # GET /books.json
   def index
@@ -60,6 +60,24 @@ class BooksController < ApplicationController
     end
   end
 
+  def discount
+	  @categories = Category.all
+  end
+
+  def apply_discount
+
+	  discount = params[:discount].to_f
+	  @category = Category.find_by_id(params[:category])
+
+	  @books = @category.books
+
+	  @books.each do |book|
+		  book.apply_discount(book, discount)
+		  book.save
+	  end
+	  render 'index', notice:  "Discount has successfully applied"
+ end
+
   # DELETE /books/1
   # DELETE /books/1.json
   def destroy
@@ -78,6 +96,6 @@ class BooksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def book_params
-      params.require(:book).permit(:title, :author, :price, :category, :image)
+      params.require(:book).permit(:title, :author, :price, :image, :category_id)
     end
 end

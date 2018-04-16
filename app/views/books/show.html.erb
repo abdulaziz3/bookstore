@@ -5,7 +5,7 @@
       <div class="caption">
         <h3 class = "center"> <%= @book.title %> </h3>
         <p>Author : <%= @book.author %> </p>
-        <p>Category: <%= @book.category %></p>
+        <p>Category: <%= @book.category.name %></p>
         <p>Price : <%= euro @book.price %></p>
       </div>
       <div class="product-action">

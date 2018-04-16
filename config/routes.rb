@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :categories
   resources :lineitems
   resources :orders
   resources :books
@@ -25,6 +26,10 @@ Rails.application.routes.draw do
   end
 
   resources :users
+
+  get 'discount' =>'books#discount'
+  get 'apply_discount' => 'books#apply_discount'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   root :to => "pages#home"

@@ -10,11 +10,3 @@ class User < ActiveRecord::Base
 		 uniqueness: {case_sensitvity: false},
 		format: { with: VALID_EMAIL_VAL }
 end
-
-class UserDecorator < Draper::Decorator
-  delegate_all
-
-  def full_name
-    "#{object.name} #{object.l_name}"
-  end
-end

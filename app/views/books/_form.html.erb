@@ -20,7 +20,6 @@
       <%= f.text_field :title, class: "form-control",  placeholder: "book title",     autofocus: true  %>
     </div>
   </div>
-author
   <div class="form-group">
     <div class="control-label col-sm-2">
       <%= f.label :author %>
@@ -32,10 +31,10 @@ author
 
   <div class="form-group">
     <div class="control-label col-sm-2">
-      <%= f.label :category %>
+      <%= f.label :category_id %>
     </div>
     <div class="col-sm-8">
-      <%= f.select :category, Book::CATEGORY, {prompt: "select category"}, {class: "form-control"} %>
+      <%= f.collection_select :category_id, Category.all, :id, :name, {prompt: "select category"}, {class: "form-control"} %>
     </div>
   </div>
 

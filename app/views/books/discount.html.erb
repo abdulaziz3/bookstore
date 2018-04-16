@@ -1,0 +1,11 @@
+<h4> Enter Discount rate here </h4>
+<%= form_tag(apply_discount_path, method: :get) do %>
+	<%= label_tag "Which category?" %>
+	<%= select_tag "category", options_from_collection_for_select(@categories, "id", "name") %>
+</br>
+</br>
+	<%= label_tag "Discount Percentage" %>
+	<%= text_field_tag "discount" %>
+</br>
+	<%= submit_tag 'Submit', :class => "btn btn-md" %>
+<% end %>

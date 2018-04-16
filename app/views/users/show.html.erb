@@ -12,8 +12,12 @@
 
 <p>
   <strong>Dob:</strong>
-  <%= @user.dob %>
+  <%= @user.dob.strftime("%d/%m/%Y") %>
 </p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<% if signed_in? and @current_user.admin? %>
+<%= link_to 'add admin', edit_user_path(@user), class: "btn btn-danger btn-lg " %>
+<% end %>
+<% if signed_in? and !@current_user.admin? %>
+<%= link_to 'Edit', edit_user_path(@user), class: "btn btn-danger btn-lg " %>
+<% end %>
+<%= link_to 'Back', users_path, class: "btn btn-danger btn-lg" %>
