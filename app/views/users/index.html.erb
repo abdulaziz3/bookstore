@@ -13,9 +13,10 @@
   </thead>
 
   <tbody>
+
     <% @users.each do |user| %>
       <tr>
-        <td><%= user.decorate.full_name %></td>
+        <td><br><%= user.decorate.full_name %></td>
         <td><%= user.email %>&nbsp;</td>
         <td><%= user.dob.strftime("%d/%m/%Y") %>&nbsp;</td>
         <td><%= link_to 'Show', user, class: "btn btn-danger btn-sm pull-right" %>&nbsp;</td>
